@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS styles */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #C2E9FB, #A1C4FD);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 90%;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+      animation: slideIn 0.5s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .payment-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .payment-options button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
+      height: 80px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-options button:hover {
+      background-color: #0056b3;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .payment-options button i {
+      font-size: 32px;
+      margin-right: 10px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .actions button {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .actions button:hover {
+      background-color: #495057;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Payment</h1>
+    <div class="payment-options">
+      <button>
+        <i class="fa-brands fa-cc-visa"></i>
+        Credit/Debit
+      </button>
+      <button>
+        <i class="fa-brands fa-paypal"></i>
+        PayPal
+      </button>
+      <button>
+        <i class="fa-brands fa-apple-pay"></i>
+        Apple Pay
+      </button>
+      <button>
+        <i class="fa-brands fa-google-pay"></i>
+        Google Pay
+      </button>
+    </div>
+    <div class="actions">
+      <a href="main shopping.html"><button id="back-to-shop">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to Shop
+      </button></a>
+     <button id="complete-order">
+        Complete Order
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript functionality
+    document.getElementById('back-to-shop').addEventListener('click', () => {
+      // Redirect to shop page
+      window.location.href = 'shop.html';
+    });
+
+    document.getElementById('complete-order').addEventListener('click', () => {
+      // Process payment and complete order
+      alert('Thank you for your purchase!');
+    });
+  </script>
+</body>
+</html>

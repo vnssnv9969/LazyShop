@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Image Gallery with Info</title>
+    <style>
+        body {
+            /* background: url(Mylogo.png); */
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 255, 252, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 252, 0.3);
+            transform: translateY(-20px);
+            opacity: 0;
+            animation: headerAppear 1s forwards;
+        }
+
+        @keyframes headerAppear {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header h1 {
+            color: #00fffc;
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #00fffc;
+        }
+
+        .header p {
+            color: white;
+            margin: 10px 0 0;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+        }
+
+        .image-box {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .image-box img {
+            filter: saturate(0%);
+            width: 100px;
+            border: 2px solid seashell;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: all ease 0.4s;
+        }
+
+        .image-box.active img {
+            filter: saturate(100%);
+            width: 250px;
+            box-shadow: 0 0 20px #00fffc, 0 0 40px #00fffc, 0 0 60px #00fffc;
+        }
+
+        .info-card {
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: rgba(0, 255, 252, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 12px;
+            color: white;
+            width: 300px;
+            transition: all ease 0.4s;
+            opacity: 0;
+            border: 1px solid rgba(0, 255, 252, 0.3);
+        }
+
+        .image-box.active .info-card {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+        }
+
+        .info-card h3 {
+            margin: 0 0 10px 0;
+            color: #00fffc;
+        }
+
+        .info-card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .header:hover {
+            box-shadow: 0 0 20px #00fffc, 0 0 40px #00fffc;
+            transition: box-shadow 0.4s ease;
+        }
+        .goshopbtn1{
+           background-color:#ba80ff;
+           height :50px;
+           width:130px;
+           border-radius:10px;
+           font-family: "Courier New", Courier, monospace;;
+           font-weight:bold;
+           font-size:20px;
+           border-color:white;
+           position: relative;
+           top: 313px;
+           left: -45px;
+       }
+       .back-btn {
+            background-color: #666;
+            color: white;
+            position: relative;
+            top: 15px;
+            height: 30px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>About Us</h1>
+        <p>We are a group of passionate BCA students from B K College Chikkodi, dedicated to exploring and mastering the world of computer applications. Together, we're building the future through technology and innovation.</p>
+    </div>
+
+    <div class="container">
+        <div class="image-box">
+            <img src="varun.jpg" alt="Student 1">
+            <div class="info-card">
+                <h3>Varun Shinge</h3>
+                <p>Degree: Bachelor of Computer Application </p>
+                <p>College: B K College Chikkodi </p>
+                <p><b>Contact :7411*****9</b></p>
+                <p><b>E-mail:Varun@gmail.com</b></p>
+
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="atharva.jpg" alt="Student 2">
+            <div class="info-card">
+                <h3>Atharv Y</h3>
+                <p>Degree: Bachelor of Computer Application</p>
+                <p>College: B K College Chikkodi</p>
+                <p><b>Contact :7411*****5</b></p>
+                <p><b>E-mail:Atharav@gmail.com</b></p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="ashithosha.jpg" alt="Student 3">
+            <div class="info-card">
+                <h3>Ashitosh S</h3>
+                <p>Degree: Bachelor of Computer Application</p>
+                <p>College: B K College Chikkodi</p>
+                <p><b>Contact :7411*****7</b></p>
+                <p><b>E-mail:Ashitosh.com</b></p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="img4.jpg" alt="Student 4">
+            <div class="info-card">
+                <h3>Yash B</h3>
+                <p>Degree: Bachelor of Computer Application</p>
+                <p>College: B K College Chikkodi</p>
+                <p><b>Contact :7411*****3</b></p>
+                <p><b>E-mail:Yash@gmail.com</b></p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="sachin.jpg" alt="Student 5">
+            <div class="info-card">
+                <h3>Sachin B</h3>
+                <p>Degree: Bachelor of Computer Application</p>
+                <p>College: B K College Chikkodi </p>
+                <p><b>Contact :7411*****5</b></p>
+                <p><b>E-mail:Sachin@gmail.com</b></p>
+            </div>
+        </div>
+    </div>
+    <a href="Menuicon.html"><button class="goshopbtn1" >go back</button></a>
+    <script>
+        const imageBoxes = document.querySelectorAll('.image-box');
+        
+        imageBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                // Remove active class from all boxes
+                imageBoxes.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked box
+                box.classList.add('active');
+            });
+        });
+        
+    </script>
+     <a href="Menuicon.html"><button type="button" class="back-btn" onclick="goBack()">Go Back</button></a>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        img { user-select: none; }
+        body { 
+            overflow-x: hidden; 
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            height: 100svh;
+        }
+        a { display: inline-block; }
+
+        .heading-style-2 {
+            color: #FFF;
+            font-size: 50px;
+            font-weight: 900;
+            line-height: 50px;
+            margin-bottom: 40px;
+        }
+        p {
+            color: #FFF;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 35px;
+            margin-bottom: 28px;
+        }
+
+        .slider-main {
+            min-height: 100vh;
+            background: radial-gradient(50% 50% at 50% 50%, #C7F6D0 0%, #7CB686 92.19%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        #backgrounds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            z-index: -1;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .container {
+            position: relative;
+            left: calc(50% - (1140px/2));
+            width: 50%;
+            padding-block: 0;
+            max-width: 525px;
+            height: 100%;
+        }
+
+        .slider-content-wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            padding-top: 0;
+        }
+
+        .slider-images {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            top: 0;
+        }
+        .slider-images > img {
+            position: absolute;
+            top: 0%;
+            left: 100%;
+            filter: blur(25px);
+            transform: translate(-50%, -50%) scale(0.3);
+            transition: opacity 3s;
+            object-fit: cover;
+            max-width: 593px;
+            max-height: 779px;
+            height: 100%;
+            min-height: 320px;
+        }
+
+        .slider-images > img.next {
+            opacity: 1;
+            transition: 2s;
+            filter: blur(35px);
+            left: 100%;
+            top: 10%;
+            transform: translate(-50%, -50%) scale(0.3);
+        }
+        .slider-images > img.active {
+            opacity: 1;
+            transform: scale(1);
+            transition: 2s;
+            filter: blur(0px);
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        .slider-images > img.previous {
+            opacity: 1;
+            transition: 2s;
+            filter: blur(25px);
+            left: 95%;
+            top: 90%;
+        }
+        .slider-images > img.inactive {
+            opacity: 0;
+            transition: 2s;
+            filter: blur(35px);
+            left: 100%;
+            top: 100%;
+            transform: translate(10%, 10%) scale(0.3);
+        }
+
+        @media screen and (max-width: 1199px) {
+            .heading-style-2 { font-size: 40px; line-height: 45px; margin-bottom: 30px; }
+            p { font-size: 17px; line-height: 28px; margin-bottom: 22px; }
+            .container { left: calc(50% - (920px/2)); max-width: 475px; }
+            .slider-images > img { width: 453px; height: auto; aspect-ratio: 1/1.3; }
+        }
+
+        @media screen and (max-width: 991px) {
+            .heading-style-2 { font-size: 35px; line-height: 43px; margin-bottom: 22px; }
+            p { font-size: 16px; line-height: 26px; margin-bottom: 18px; }
+            .container { left: calc(50% - (720px/2)); max-width: 405px; }
+            .slider-images { width: 45%; }
+            .slider-images > img { width: 340px; aspect-ratio: 1/1.3; }
+        }
+
+        @media screen and (max-width: 767px) {
+            .slider-main { flex-direction: column; min-height: 900px; }
+            .container { position: unset; max-width: 540px; width: 100%; }
+            .slider-images { width: 100%; }
+            .slider-images > img { height: 380px; aspect-ratio: 1/1.3; width: auto; }
+            .slider-images > img.active { top: 45%; left: 20%; }
+        }
+
+        @media screen and (max-width: 575px) {
+            .heading-style-2 { font-size: 30px; line-height: 40px; margin-bottom: 20px; }
+            p { font-size: 15px; line-height: 24px; margin-bottom: 16px; }
+            .container { padding: 0 20px; max-width: 100%; }
+            .slider-images > img { height: 100px; }
+            .slider-images > img.active { top: 50%; left: 5%; }
+            .slider-images > img.previous { top: 100%; }
+        }
+       .goshopbtn{
+           background-color:#ba80ff;
+           height :50px;
+           width:130px;
+           border-radius:10px;
+           font-family: "Courier New", Courier, monospace;;
+           font-weight:bold;
+           font-size:20px;
+           border-color:white;
+           position: relative;
+           top: 313px;
+           right: 1200px;
+          
+       }
+       .goshopbtn1{
+           background-color:#ba80ff;
+           height :50px;
+           width:130px;
+           border-radius:10px;
+           font-family: "Courier New", Courier, monospace;;
+           font-weight:bold;
+           font-size:20px;
+           border-color:white;
+           position: relative;
+           top: 313px;
+           left: -45px;
+       }
+    
+    </style>
+</head>
+<body>
+
+    <section class="slider-main">
+        <div class="container">
+            <div class="slider-content-wrap">
+                <div class="slider-content">
+                    <h2 class="heading-style-2">Lazy shop</h2>
+                    <p>Qoute..... </p>
+                    <h3 class="heading-style-2">50% on any product</h3>
+                </div>
+            </div>
+        </div>
+           
+        <div class="slider-images">
+            <img class="slider-image" src="Greenshoes.png" alt="Green shoes">
+            <img class="slider-image" src="bag.png" alt="Bag">
+            <img class="slider-image" src="https://www.yudiz.com/codepen/headphone-slider/red.png" alt="Headphones">
+            <img class="slider-image" src="watch.png" alt="Watch">
+            <img class="slider-image" src="hoodie.png" alt="Hoodie">
+        </div>
+        <div id="backgrounds">
+            <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #C7F6D0 0%, #7CB686 92.19%);"></div>
+            <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #D1E4F6 0%, #5F9CCF 100%);"></div>
+            <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #FFB7B2 0%, #ED746E 100%);"></div>
+            <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #D7D7D7 0%, #979797 100%);"></div>
+            <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #6B6B6B 0%, #292929 100%);"></div>
+        </div>
+        <a href="main shopping.html"><button class="goshopbtn" >shop here</button></a>
+        <a href="Menuicon.html"><button class="goshopbtn1" >go back</button></a>
+    </section>
+      <script src="mainhome.js">
+ 
+  
+      </script> 
+</body>
+</html>

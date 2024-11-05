@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .star {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ddd;
+        }
+
+        .star.active {
+            color: #ffd700;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            position: relative;
+            top: 15px;
+        }
+
+        .back-btn {
+            background-color: #666;
+            color: white;
+            position: relative;
+            top: 15px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .thank-you {
+            display: none;
+            text-align: center;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="feedbackForm">
+            <h2>Shopping Feedback</h2>
+            
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Rate your experience:</label>
+                <div class="rating">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="feedback">Your Feedback:</label>
+                <textarea id="feedback" required></textarea>
+            </div>
+
+            <div class="buttons">
+
+                <a href="Menuicon.html"><button type="button" class="back-btn" onclick="goBack()">Go Back</button></a>
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </div>
+        </form>
+
+        <div class="thank-you" id="thankYou">
+            <h2>Thank You!</h2>
+            <p>We appreciate your feedback.</p>
+            <a href="Menuicon.html"><button type="button" class="back-btn" onclick="goBack()">Go Back</button></a>
+        </div>
+    </div>
+
+    <script>
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        let rating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', (e) => {
+                rating = e.target.dataset.rating;
+                updateStars();
+            });
+
+            star.addEventListener('mouseover', (e) => {
+                const hoverRating = e.target.dataset.rating;
+                highlightStars(hoverRating);
+            });
+
+            star.addEventListener('mouseout', () => {
+                updateStars();
+            });
+        });
+
+        function updateStars() {
+            stars.forEach(star => {
+                const starRating = star.dataset.rating;
+                if (starRating <= rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function highlightStars(hoverRating) {
+            stars.forEach(star => {
+                const starRating = star.dataset.rating;
+                if (starRating <= hoverRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        // Form submission
+        const form = document.getElementById('feedbackForm');
+        const thankYou = document.getElementById('thankYou');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would typically send the data to your server
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                rating: rating,
+                feedback: document.getElementById('feedback').value
+            };
+
+            console.log('Form Data:', formData);
+
+            // Show thank you message
+            form.style.display = 'none';
+            thankYou.style.display = 'block';
+        });
+
+        // Go back functionality
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
