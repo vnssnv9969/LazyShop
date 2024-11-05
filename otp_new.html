@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="otp_new.css" />
+    <title>Document</title>
+    <style>
+        #sign-div{
+    
+    margin: auto;
+    
+    height: 620px;
+    width: 350px;
+    border: 1px solid transparent;
+    background-color: #ffffff;
+}
+#main-sign{
+    margin: auto;
+    height: 680px;
+    width: 400px;
+    border: 1px solid transparent;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#verify{
+    margin-top: 40px;
+    font-size: 27px;
+    color: rgb(8, 8, 8);
+    font-family: sans-serif;
+}
+#join{
+    margin-top: 32px;
+    font-size: 14px;
+    color: rgb(19, 18, 18);
+    line-height: 5px;
+    font-family: sans-serif;
+}
+#main-logo-div{
+    height: 130px;
+    width: 100%;
+}
+#main-email{
+    width: 290px;
+    height: 85px;
+    font-family: sans-serif;
+}
+#continue-btn{
+    border: transparent;
+    height: 40px;
+    width: 150px;
+    color: white;
+    background-color:#f4aaff;
+    cursor: pointer;
+    border-radius:20px;
+}
+
+#button-div{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    border: 1px solid transparent;
+}
+#button-div > a{
+    text-decoration: none;
+}
+#sign-button{
+    margin-left: 295px;
+    background-color: transparent;
+    font-size: 34px;
+    border: none;
+    cursor: pointer;
+}
+#search{
+    width: 98%;
+    font-weight: bold;
+    border: transparent;
+    height: 30px;
+    border-bottom: 1px solid black;
+}
+#otp{
+   
+    font-size: 15px;
+}
+#back-btn{
+    color: black;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="main-sign">
+      <div id="sign-div">
+        <div id="button-div">
+          <a href="login.html"><p id="back-btn">Back</p></a>
+          <button id="sign-button">&times;</button>
+        </div>
+
+        <div>
+          <div>
+            <h1 id="verify">Number Verification</h1>
+          </div>
+          <div id="main-logo-div">
+            <div>
+              <p id="join">Please enter OTP sent to</p>
+              <p id="otp">7249840809</p>
+            </div>
+          </div>
+        </div>
+        <div id="main-email">
+          <input id="search" type="text" placeholder="Enter OTP" />
+        </div>
+        <div>
+          <button onclick="home()" id="continue-btn">Let's Go</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  function home() {
+    window.location.href = "Menuicon.html";
+  }
+
+  let num = JSON.parse(localStorage.getItem("num_local"));
+
+  console.log(num);
+
+  num.forEach(function (el) {
+    console.log(el);
+    console.log(el.number);
+
+    let p_tag = document.getElementById("otp");
+    p_tag.innerText = el.number;
+  });
+</script>

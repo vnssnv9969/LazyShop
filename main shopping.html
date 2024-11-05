@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Shop</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #161616;
+            color: white;
+        }
+
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-text p {
+            font-size: 1.2rem;
+            color: #888;
+        }
+
+        .menu {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu li {
+            position: absolute;
+            left: 0;
+            list-style: none;
+            transform: rotate(0deg) translateX(120px);
+            transform-origin: 150px;
+            transition: 0.5s;
+            transition-delay: calc(0.1s * var(--i));
+            scale: 0;
+        }
+
+        .menu.active li {
+            transform: rotate(calc(360deg / 6 * var(--i)));
+            scale: 1;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            text-decoration: none;
+            border-radius: 50%;
+            transform: rotate(calc(360deg / -6 * var(--i)));
+            transition: 1s;
+            color: transparent;
+            transition-delay: 0.5s;
+        }
+
+        .menu.active a {
+            color: var(--clr);
+        }
+
+        .menu a::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: var(--clr);
+            transform: rotate(calc(90deg * var(--i))) translate(0, 30px);
+            transition: width 0.5s, height 0.5s, transform 0.5s;
+            transition-delay: 0.5s, 1s, 1.5s;
+            border-radius: 10px;
+        }
+
+        .menu.active a::before {
+            width: 60px;
+            height: 60px;
+            background: #161616;
+            border: 2px solid var(--clr);
+            transform: rotate(calc(0deg * var(--i)));
+            transition: transform 0.5s, height 0.5s, width 0.5s;
+            transition-delay: 0.5s, 1.5s, 1.5s;
+            border-radius: 12px;
+            filter: drop-shadow(0 0 5px var(--clr));
+            rotate: 45deg;
+        }
+
+        .menu.active li:hover a::before {
+            background: var(--clr);
+        }
+
+        .menu.active li:hover a i {
+            color: #161616;
+            transform: scale(1.2);
+        }
+
+        .menuToggle {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: #fff;
+            color: #161616;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 2rem;
+            transition: 1.5s;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .menu.active .menuToggle {
+            transform: rotate(315deg);
+        }
+
+        .menu i {
+            font-size: 1.75rem;
+            transition: 0.5s;
+            z-index: 1;
+        }
+           .gobackbtn{
+           background-color:#ba80ff;
+           height :50px;
+           width:130px;
+           border-radius:10px;
+           font-family: "Courier New", Courier, monospace;;
+           font-weight:bold;
+           font-size:20px;
+           border-color:white;
+           
+       }
+    </style>
+</head>
+<body>
+    <div class="welcome-text">
+        <h1>Welcome to Lazy Shop</h1>
+        <p>Choose what you want to shop</p>
+    </div>
+
+    <div class="menu">
+        <div class="menuToggle">
+            <i class="fa-solid fa-plus"></i>
+        </div>
+        <li style="--i:0;--clr:#ff6b6b;">
+            <a href="shoes.html"><i class="fa-solid fa-shoe-prints"></i></a>
+        </li>
+        <li style="--i:1;--clr:#4ecdc4;">
+            <a href="bags.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        </li>
+        <li style="--i:2;--clr:#ffe66d;">
+            <a href="headphone.html"><i class="fa-solid fa-headphones"></i></a>
+        </li>
+        <li style="--i:3;--clr:#ff6b6b;">
+            <a href="hoodie.html"><i class="fa-solid fa-shirt"></i></a>
+        </li>
+        <li style="--i:4;--clr:#4ecdc4;">
+            <a href="watch.html"><i class="fa-solid fa-clock"></i></a>
+        </li>
+        <li style="--i:5;--clr:#ffe66d;">
+            <a href="hat.html"><i class="fa-solid fa-hat-cowboy"></i></a>
+        </li>
+    </div>
+    
+    <script>
+        let menuToggle = document.querySelector('.menuToggle');
+        let menu = document.querySelector('.menu');
+        
+        menuToggle.onclick = function() {
+            menu.classList.toggle('active');
+        }
+    </script>
+    <a href="homeindex.html"> <button class="gobackbtn" >Go back</button></a>
+</body>
+</html>
